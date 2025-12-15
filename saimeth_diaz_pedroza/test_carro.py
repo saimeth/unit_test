@@ -1,4 +1,3 @@
-
 from carro import Carro, Motor
 from carro import Ambiente, Aprendiz
 
@@ -12,10 +11,12 @@ def test_instancia():
 
     ambiente = Ambiente("segundo", 30)
     assert len(ambiente.aprendices) == 0
-    
+
     ambiente.agregarApren(apren1)
     ambiente.agregarApren(apren2)
     ambiente.agregarApren(apren3)
+
+    assert len(ambiente.aprendices) == 3
     assert all(isinstance(a, Aprendiz) for a in ambiente.aprendices)
     assert isinstance(ambiente, Ambiente)
 
@@ -30,26 +31,24 @@ def test_metodo_agregar():
 
 
 # verificar atributos
-def test_atruibutos():
+def test_atributos_ambiente():
     aprendiz = Aprendiz("sam")
     ambiente = Ambiente("segundo", 30)
 
-    
     assert aprendiz.nombre == "sam"
-
-  
     assert ambiente.grado == "segundo"
     assert ambiente.silla == 30
-    assert ambiente.aprendices == []   
+    assert ambiente.aprendices == []
 
     ambiente.agregarApren(aprendiz)
     assert ambiente.aprendices[0].nombre == "sam"
 
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
 ############################## COMPISICIÓN ###############################
 ## Verificar instancia
@@ -61,14 +60,13 @@ def test_carro():
 
 
 ## verificar atributos
-def test_atributos():
+def test_atributos1():
     motor = Motor("ABC123")
     carro = Carro(motor, "azul")
-    
+
     assert carro.color == "azul"
-    assert isinstance(carro.motor, Motor) 
+    assert isinstance(carro.motor, Motor)
     assert carro.motor.numSerie == "ABC123"
-    
 
 
 ## verificar método
